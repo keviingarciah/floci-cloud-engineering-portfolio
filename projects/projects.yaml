@@ -1,0 +1,244 @@
+# Portfolio project index. Source of truth for metadata.
+# Humans and a future static site should read this file, not scrape the README.
+# Schema: projects/schema.en.md
+schema_version: 1
+
+statuses:
+  planned:
+    en: Planned
+    es: Planificado
+  in_progress:
+    en: In progress
+    es: En progreso
+  implemented_learning_pending:
+    en: "Implemented — learning/reconstruction pending"
+    es: "Implementado — reconstrucción y validación del aprendizaje pendientes"
+  completed:
+    en: Completed
+    es: Completado
+  archived:
+    en: Archived
+    es: Archivado
+
+difficulties:
+  foundational:
+    en: Foundational
+    es: Fundacional
+  intermediate:
+    en: Intermediate
+    es: Intermedio
+  advanced:
+    en: Advanced
+    es: Avanzado
+
+projects:
+  - id: "01"
+    slug: floci-cloud-foundation
+    name:
+      en: Floci Cloud Foundation
+      es: Fundamentos de nube con Floci
+    description:
+      en: Local Floci setup for the AWS CLI, Terraform, S3, DynamoDB, infrastructure lifecycle, state, and repeatable environments.
+      es: Entorno local con Floci para la AWS CLI, Terraform, S3, DynamoDB, el ciclo de vida de la infraestructura, el estado y entornos repetibles.
+    technologies:
+      - Floci
+      - Floci UI
+      - Docker Compose
+      - AWS CLI
+      - Terraform
+      - S3
+      - DynamoDB
+      - SQS
+    difficulty: foundational
+    status: implemented_learning_pending
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note:
+      en: "A first version was finished, then made private and renamed to floci-cloud-foundation-depr so the lab can be rebuilt from scratch. That retired copy used the Floci UI, Docker Compose, Terraform, and the AWS CLI to create an S3 bucket, a DynamoDB table, and an SQS queue on 127.0.0.1, with a guard that rejects other endpoints. The portfolio repository is not published yet."
+      es: "Una primera versión quedó terminada, luego se hizo privada y se renombró a floci-cloud-foundation-depr para rehacer el laboratorio desde cero. Esa copia retirada usaba la Floci UI, Docker Compose, Terraform y la AWS CLI para crear un bucket de S3, una tabla de DynamoDB y una cola de SQS en 127.0.0.1, con una validación que rechaza cualquier otro endpoint. El repositorio del portafolio todavía no está publicado."
+
+  - id: "02"
+    slug: floci-event-driven-commerce
+    name:
+      en: Event-Driven Commerce
+      es: Comercio orientado a eventos
+    description:
+      en: Go services on Floci for asynchronous orders, idempotency, retries, and dead-letter queues.
+      es: Servicios en Go sobre Floci para pedidos asíncronos, idempotencia, reintentos y colas de mensajes fallidos.
+    technologies:
+      - Go
+      - Lambda
+      - API Gateway
+      - DynamoDB
+      - SQS
+      - SNS
+      - EventBridge
+      - Step Functions
+    difficulty: intermediate
+    status: implemented_learning_pending
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note:
+      en: "A first version was finished, then made private and renamed to floci-event-driven-commerce-depr so the lab can be rebuilt from scratch. That retired Terraform included API Gateway, Lambda, DynamoDB, EventBridge, S3, SQS with a dead-letter queue, Step Functions, and IAM task roles. SNS was not in that Terraform. API Gateway authorization was described as optional follow-up. The portfolio repository is not published yet."
+      es: "Una primera versión quedó terminada, luego se hizo privada y se renombró a floci-event-driven-commerce-depr para rehacer el laboratorio desde cero. Ese Terraform retirado incluía API Gateway, Lambda, DynamoDB, EventBridge, S3, SQS con cola de mensajes fallidos, Step Functions y roles de IAM para las tareas. SNS no estaba en ese Terraform. La autorización de API Gateway estaba descrita como seguimiento opcional. El repositorio del portafolio todavía no está publicado."
+
+  - id: "03"
+    slug: floci-container-delivery
+    name:
+      en: Container Delivery Platform
+      es: Plataforma de entrega de contenedores
+    description:
+      en: Container build and delivery with Docker, ECS, ECR, RDS, Redis, ALB, Jenkins, and AWS-compatible pipelines, including blue/green deployments.
+      es: Construcción y entrega de contenedores con Docker, ECS, ECR, RDS, Redis, ALB, Jenkins y pipelines compatibles con AWS, incluidos despliegues blue/green.
+    technologies:
+      - Docker
+      - ECS
+      - ECR
+      - RDS
+      - Redis
+      - ALB
+      - CodeBuild
+      - CodePipeline
+      - CodeDeploy
+      - Jenkins
+    difficulty: intermediate
+    status: planned
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note: null
+
+  - id: "04"
+    slug: floci-sre-observability
+    name:
+      en: SRE and Observability
+      es: SRE y observabilidad
+    description:
+      en: Signals, SLOs, and failure recovery with CloudWatch, Prometheus, Grafana, Loki, OpenTelemetry, Jaeger, and load and fault injection.
+      es: Señales, SLO y recuperación ante fallos con CloudWatch, Prometheus, Grafana, Loki, OpenTelemetry, Jaeger e inyección de carga y de fallos.
+    technologies:
+      - CloudWatch
+      - Prometheus
+      - Grafana
+      - Loki
+      - Grafana Alloy
+      - OpenTelemetry
+      - Jaeger
+      - Alertmanager
+      - k6
+      - Toxiproxy
+    difficulty: intermediate
+    status: planned
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note: null
+
+  - id: "05"
+    slug: floci-kubernetes-platform
+    name:
+      en: Kubernetes Application Platform
+      es: Plataforma de aplicaciones en Kubernetes
+    description:
+      en: An EKS-compatible local k3s platform with Kubernetes, Helm, Kustomize, RBAC, IAM Pod Identity, Forgejo, Argo CD, and GitOps.
+      es: Una plataforma local en k3s compatible con EKS, con Kubernetes, Helm, Kustomize, RBAC, IAM Pod Identity, Forgejo, Argo CD y GitOps.
+    technologies:
+      - k3s
+      - Kubernetes
+      - Helm
+      - Kustomize
+      - RBAC
+      - IAM Pod Identity
+      - Forgejo
+      - Argo CD
+    difficulty: advanced
+    status: planned
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note: null
+
+  - id: "06"
+    slug: floci-multi-account-landing-zone
+    name:
+      en: Multi-Account Landing Zone
+      es: Zona de aterrizaje multicuenta
+    description:
+      en: Account separation and security governance with AWS Organizations, IAM, STS, SCPs, CloudTrail, and Terraform.
+      es: Separación de cuentas y gobierno de seguridad con AWS Organizations, IAM, STS, SCP, CloudTrail y Terraform.
+    technologies:
+      - AWS Organizations
+      - IAM
+      - STS
+      - SCP
+      - CloudTrail
+      - Terraform
+    difficulty: advanced
+    status: planned
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note: null
+
+  - id: "07"
+    slug: floci-streaming-analytics
+    name:
+      en: Streaming Analytics Platform
+      es: Plataforma de analítica en streaming
+    description:
+      en: Streaming ingestion and analytics with MSK, Kinesis, Firehose, S3, Glue, Athena, and OpenSearch.
+      es: Ingesta y analítica en streaming con MSK, Kinesis, Firehose, S3, Glue, Athena y OpenSearch.
+    technologies:
+      - MSK
+      - Kinesis
+      - Firehose
+      - S3
+      - Glue
+      - Athena
+      - OpenSearch
+    difficulty: advanced
+    status: planned
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note: null
+
+  - id: "08"
+    slug: floci-internal-developer-platform
+    name:
+      en: Internal Developer Platform
+      es: Plataforma interna para desarrolladores
+    description:
+      en: Capstone platform engineering, reusable Terraform modules, golden paths, Kubernetes, CI/CD, GitOps, Jenkins, observability, and developer self-service.
+      es: Proyecto final de ingeniería de plataforma, módulos reutilizables de Terraform, rutas de referencia (golden paths), Kubernetes, CI/CD, GitOps, Jenkins, observabilidad y autoservicio para desarrolladores.
+    technologies:
+      - Terraform
+      - Kubernetes
+      - CI/CD
+      - GitOps
+      - Jenkins
+      - Observability
+    difficulty: advanced
+    status: planned
+    url: null
+    url_verified: false
+    documentation: []
+    demo: null
+    featured: false
+    repository_note: null
