@@ -47,7 +47,7 @@ Las tecnologías nombran el alcance de aprendizaje de cada proyecto. Un reposito
 
 | # | Proyecto | Descripción | Tecnologías principales | Dificultad | Progreso actual | Repositorio |
 | --- | --- | --- | --- | --- | --- | --- |
-| 01 | Fundamentos de nube con Floci | Entorno local con Floci para la AWS CLI, Terraform, S3, DynamoDB, el ciclo de vida de la infraestructura, el estado y entornos repetibles. | Floci, Floci UI, Docker Compose, AWS CLI, Terraform, S3, DynamoDB, SQS | Fundacional | Implementado — reconstrucción y validación del aprendizaje pendientes | `floci-cloud-foundation` — No publicado |
+| 01 | Fundamentos de nube con Floci | Entorno local con Floci para la AWS CLI, Terraform, S3, DynamoDB, el ciclo de vida de la infraestructura, el estado y entornos repetibles. | Floci, Floci UI, Docker Compose, AWS CLI, Terraform, S3, DynamoDB, SQS | Fundacional | Implementado — reconstrucción y validación del aprendizaje pendientes | [floci-cloud-foundation](https://github.com/keviingarciah/floci-cloud-foundation) |
 | 02 | Comercio orientado a eventos | Servicios en Go sobre Floci para pedidos asíncronos, idempotencia, reintentos y colas de mensajes fallidos. | Go, Lambda, API Gateway, DynamoDB, SQS, SNS, EventBridge, Step Functions | Intermedio | Implementado — reconstrucción y validación del aprendizaje pendientes | `floci-event-driven-commerce` — No publicado |
 | 03 | Plataforma de entrega de contenedores | Construcción y entrega de contenedores con Docker, ECS, ECR, RDS, Redis, ALB, Jenkins y pipelines compatibles con AWS, incluidos despliegues blue/green. | Docker, ECS, ECR, RDS, Redis, ALB, CodeBuild, CodePipeline, CodeDeploy, Jenkins | Intermedio | Planificado | `floci-container-delivery` — No publicado |
 | 04 | SRE y observabilidad | Señales, SLO y recuperación ante fallos con CloudWatch, Prometheus, Grafana, Loki, OpenTelemetry, Jaeger e inyección de carga y de fallos. | CloudWatch, Prometheus, Grafana, Loki, Grafana Alloy, OpenTelemetry, Jaeger, Alertmanager, k6, Toxiproxy | Intermedio | Planificado | `floci-sre-observability` — No publicado |
@@ -66,13 +66,13 @@ Las tecnologías nombran el alcance de aprendizaje de cada proyecto. Un reposito
 
 ### Enlaces a repositorios
 
-Ningún proyecto tiene URL en este índice. Los proyectos 01 y 02 ya tuvieron una primera versión. Esas copias se hicieron privadas y se renombraron con el sufijo `-depr` para rehacer los laboratorios desde cero. Este índice no enlaza las copias retiradas.
+El proyecto 01 es público. El proyecto 02 todavía no tiene URL pública. Ambos proyectos tuvieron una versión anterior que se hizo privada y se renombró con el sufijo `-depr`. Este índice no enlaza esas copias retiradas.
 
-**01 — Fundamentos de nube con Floci.** Una primera versión quedó terminada, luego se hizo privada y se renombró a floci-cloud-foundation-depr para rehacer el laboratorio desde cero. Esa copia retirada usaba la Floci UI, Docker Compose, Terraform y la AWS CLI para crear un bucket de S3, una tabla de DynamoDB y una cola de SQS en 127.0.0.1, con una validación que rechaza cualquier otro endpoint. El repositorio del portafolio todavía no está publicado.
+**01 — Fundamentos de nube con Floci.** [Repositorio](https://github.com/keviingarciah/floci-cloud-foundation). [Arquitectura](https://github.com/keviingarciah/floci-cloud-foundation/blob/main/docs/architecture.md), [notas de estado](https://github.com/keviingarciah/floci-cloud-foundation/blob/main/docs/state.md), [recorrido ilustrado](https://keviingarciah.github.io/floci-cloud-foundation/). El laboratorio público rehecho usa Floci 2.3.0, la Floci UI, Docker Compose, Terraform y la AWS CLI para crear un bucket de S3, una tabla de DynamoDB y una cola de SQS en 127.0.0.1, con una validación que rechaza cualquier otro endpoint. Una copia privada anterior sigue bajo el nombre floci-cloud-foundation-depr y no se enlaza. La reconstrucción del aprendizaje sigue pendiente.
 
 **02 — Comercio orientado a eventos.** Una primera versión quedó terminada, luego se hizo privada y se renombró a floci-event-driven-commerce-depr para rehacer el laboratorio desde cero. Ese Terraform retirado incluía API Gateway, Lambda, DynamoDB, EventBridge, S3, SQS con cola de mensajes fallidos, Step Functions y roles de IAM para las tareas. SNS no estaba en ese Terraform. La autorización de API Gateway estaba descrita como seguimiento opcional. El repositorio del portafolio todavía no está publicado.
 
-Los proyectos 03 a 08 no tienen repositorio en este índice. No hay una demo pública. Cuando exista un laboratorio público, hay que seguir las instrucciones de ese repositorio. Los laboratorios que usen los mismos puertos locales deben ejecutarse de a uno.
+Los proyectos 03 a 08 no tienen repositorio en este índice. No hay una demo pública en vivo. Hay que seguir las instrucciones de cada repositorio publicado. Los laboratorios que usen los mismos puertos locales deben ejecutarse de a uno.
 
 ## Progresión de aprendizaje
 
@@ -102,7 +102,7 @@ El proyecto 08 es el cierre. Es el punto en el que los proyectos anteriores debe
 
 ## Stack tecnológico
 
-Las herramientas se agrupan por función. La matriz completa, con la marca de qué herramientas se vieron en un repositorio privado, está en el [stack tecnológico](docs/technology-stack.es.md).
+Las herramientas se agrupan por función. La matriz completa, con la marca de qué herramientas ya nombra un laboratorio publicado, está en el [stack tecnológico](docs/technology-stack.es.md).
 
 | Categoría | Herramientas de este camino |
 | --- | --- |
@@ -120,7 +120,7 @@ Las herramientas se agrupan por función. La matriz completa, con la marca de qu
 
 Ningún proyecto está destacado todavía.
 
-Un proyecto pasa a destacado solo cuando `featured: true` queda definido en [projects/projects.yaml](projects/projects.yaml). Hay que activar esa marca cuando un repositorio público tenga una implementación suficientemente completa y este índice tenga evidencia técnica. Los proyectos 01 y 02 siguen sin destacarse. Sus primeras versiones quedaron retiradas como repositorios privados con sufijo `-depr`, y los laboratorios rehechos todavía no están publicados.
+Un proyecto pasa a destacado solo cuando `featured: true` queda definido en [projects/projects.yaml](projects/projects.yaml). Hay que activar esa marca cuando un repositorio público tenga una implementación suficientemente completa y este índice tenga evidencia técnica. Los proyectos 01 y 02 siguen sin destacarse mientras la reconstrucción del aprendizaje esté pendiente. El proyecto 01 es público. El proyecto 02 todavía no está publicado.
 
 ## Reproducibilidad
 

@@ -131,6 +131,10 @@ DIAGRAM_PAIRS = [
 ]
 
 PUBLISHED_STATUS = {
+    "en": "Named in a published lab",
+    "es": "Nombrado en un laboratorio publicado",
+}
+PRIVATE_STATUS = {
     "en": "Seen in a private repository",
     "es": "Visto en un repositorio privado",
 }
@@ -139,31 +143,33 @@ UNPUBLISHED_STATUS = {
     "es": "Aún no hay laboratorio publicado",
 }
 
-# Tools present in the private project 01 or 02 repositories reviewed on 2026-10-18.
-# Move a name out of this list only when that evidence is gone.
-SEEN_IN_PRIVATE_REPOSITORY = {
+# Tools present in the public project 01 repository.
+NAMED_IN_PUBLISHED_LAB = {
     "Floci",
     "Floci UI",
     "AWS CLI",
-    "AWS SDK",
     "Terraform",
-    "Go",
     "Docker",
     "Docker Compose",
+    "SQS",
+    "S3",
+    "DynamoDB",
+}
+
+# Tools present only in the retired private project 02 copy so far.
+SEEN_IN_PRIVATE_REPOSITORY = {
+    "AWS SDK",
+    "Go",
     "Lambda",
     "API Gateway",
     "Step Functions",
-    "SQS",
     "EventBridge",
-    "S3",
-    "DynamoDB",
     "IAM",
 }
 
-# Curriculum tools with no published lab evidence.
+# Curriculum tools with no lab evidence in this index yet.
 # Remove a name only after a repository shows the tool,
-# and move it into SEEN_IN_PRIVATE_REPOSITORY in the same change.
-# When the repository is public, also change PUBLISHED_STATUS.
+# and move it into NAMED_IN_PUBLISHED_LAB or SEEN_IN_PRIVATE_REPOSITORY.
 MUST_NOT_CLAIM = {
     "SNS",
     "ECS",
@@ -222,6 +228,8 @@ SKIP_CELLS = {
     "Cliente",
     PUBLISHED_STATUS["en"],
     PUBLISHED_STATUS["es"],
+    PRIVATE_STATUS["en"],
+    PRIVATE_STATUS["es"],
     UNPUBLISHED_STATUS["en"],
     UNPUBLISHED_STATUS["es"],
 }
@@ -297,10 +305,24 @@ def tool_names(text: str) -> list[str]:
     return names
 
 
+def documentation_belongs_to_project(project_url: str, slug: str, doc_url: str) -> bool:
+    project_root = project_url.rstrip("/")
+    if doc_url.startswith(project_root + "/"):
+        return True
+    match = re.fullmatch(r"https://github\.com/([^/]+)/([^/]+)", project_root)
+    if not match:
+        return False
+    owner, repo = match.group(1), match.group(2)
+    if repo != slug:
+        return False
+    pages_root = f"https://{owner}.github.io/{repo}"
+    return doc_url == pages_root or doc_url.startswith(pages_root + "/")
+
+
 def check_tool_catalog(relative: str, language: str) -> None:
     text = read_text(relative)
     found = tool_names(text)
-    expected = SEEN_IN_PRIVATE_REPOSITORY | MUST_NOT_CLAIM
+    expected = NAMED_IN_PUBLISHED_LAB | SEEN_IN_PRIVATE_REPOSITORY | MUST_NOT_CLAIM
     if set(found) != expected:
         missing = sorted(expected - set(found))
         extra = sorted(set(found) - expected)
@@ -309,6 +331,7 @@ def check_tool_catalog(relative: str, language: str) -> None:
         if extra:
             fail(f"{relative} has tool rows outside the validator lists: {', '.join(extra)}")
     published = PUBLISHED_STATUS[language]
+    private = PRIVATE_STATUS[language]
     unpublished = UNPUBLISHED_STATUS[language]
     by_name = {}
     for line in text.splitlines():
@@ -317,13 +340,17 @@ def check_tool_catalog(relative: str, language: str) -> None:
         cell = line.strip().strip("|").split("|")[0].strip()
         if cell in expected:
             by_name[cell] = line
+    for name in sorted(NAMED_IN_PUBLISHED_LAB):
+        line = by_name.get(name, "")
+        if published not in line or private in line or unpublished in line:
+            fail(f"{relative} must mark {name} as {published}")
     for name in sorted(SEEN_IN_PRIVATE_REPOSITORY):
         line = by_name.get(name, "")
-        if published not in line or unpublished in line:
-            fail(f"{relative} must mark {name} as {published}")
+        if private not in line or published in line or unpublished in line:
+            fail(f"{relative} must mark {name} as {private}")
     for name in sorted(MUST_NOT_CLAIM):
         line = by_name.get(name, "")
-        if unpublished not in line or published in line:
+        if unpublished not in line or published in line or private in line:
             fail(f"{relative} must mark {name} as {unpublished}")
 
 
@@ -462,8 +489,8 @@ def validate_projects(data: dict) -> list[dict]:
                 doc_url = item.get("url")
                 if not isinstance(doc_url, str) or not doc_url.startswith("https://"):
                     fail(f"{slug}: documentation url must be https")
-                elif not isinstance(url, str) or not doc_url.startswith(url.rstrip("/") + "/"):
-                    fail(f"{slug}: documentation url must live under the project url")
+                elif not isinstance(url, str) or not documentation_belongs_to_project(url, slug, doc_url):
+                    fail(f"{slug}: documentation url must live under the project url or its GitHub Pages site")
         demo = project.get("demo")
         if demo is not None:
             if not isinstance(demo, str) or not demo.startswith("https://"):

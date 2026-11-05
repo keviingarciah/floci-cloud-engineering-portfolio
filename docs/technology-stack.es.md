@@ -12,10 +12,11 @@ La columna de estado no es una puntuación de habilidad.
 
 | Estado | Significado |
 | --- | --- |
-| Visto en un repositorio privado | Esta herramienta estaba en la copia privada retirada del proyecto 01 o 02, renombrada con el sufijo `-depr`. El laboratorio del portafolio se va a rehacer. Este índice no enlaza esa copia. |
+| Nombrado en un laboratorio publicado | El proyecto 01 ya contiene esta herramienta en código, Terraform o el README del laboratorio. Este índice no volvió a ejecutar ese laboratorio. |
+| Visto en un repositorio privado | Esta herramienta estaba en la copia privada retirada del proyecto 02, renombrada con el sufijo `-depr`. El laboratorio del portafolio para el proyecto 02 se va a rehacer. Este índice no enlaza esa copia. |
 | Aún no hay laboratorio publicado | La herramienta forma parte del plan de estudio. Ningún laboratorio publicado de este portafolio la muestra todavía. |
 
-La fecha de esa separación es 2026-10-18.
+La fecha de esa separación es 2026-11-04.
 
 | Tipo | Significado |
 | --- | --- |
@@ -43,7 +44,7 @@ flowchart TB
   TF --> API
 ```
 
-k3s, Prometheus y Grafana están en el diagrama porque son la forma de proyectos posteriores. No están en ejecución como parte de un laboratorio publicado en este índice. Docker ya es la forma en que los proyectos 01 y 02 arrancan Floci.
+k3s, Prometheus y Grafana están en el diagrama porque son la forma de proyectos posteriores. No están en ejecución como parte de un laboratorio publicado en este índice. Docker ya es la forma en que el laboratorio público del proyecto 01 arranca Floci.
 
 Apuntar Terraform a Floci no convierte a Terraform en un emulador. El provider de AWS es un cliente. Los recursos que crea son estado del emulador.
 
@@ -53,24 +54,24 @@ Apuntar Terraform a Floci no convierte a Terraform en un emulador. El provider d
 
 | Herramienta | Función | Tipo | Estado en el portafolio |
 | --- | --- | --- | --- |
-| Floci | Emulador local compatible con AWS | Proceso real | Visto en un repositorio privado |
-| Floci UI | Consola para los recursos que el emulador soporta | Proceso real | Visto en un repositorio privado |
-| AWS CLI | Operaciones manuales contra el endpoint local | Cliente | Visto en un repositorio privado |
+| Floci | Emulador local compatible con AWS | Proceso real | Nombrado en un laboratorio publicado |
+| Floci UI | Consola para los recursos que el emulador soporta | Proceso real | Nombrado en un laboratorio publicado |
+| AWS CLI | Operaciones manuales contra el endpoint local | Cliente | Nombrado en un laboratorio publicado |
 | AWS SDK | Llamadas del SDK de Go desde las funciones del proyecto 02 | Cliente | Visto en un repositorio privado |
 
 ### Infraestructura como código
 
 | Herramienta | Función | Tipo | Estado en el portafolio |
 | --- | --- | --- | --- |
-| Terraform | Configuración escrita a mano y ciclo de vida | Cliente | Visto en un repositorio privado |
+| Terraform | Configuración escrita a mano y ciclo de vida | Cliente | Nombrado en un laboratorio publicado |
 
 ### Runtime de aplicaciones
 
 | Herramienta | Función | Tipo | Estado en el portafolio |
 | --- | --- | --- | --- |
 | Go | Lenguaje de aplicación para los laboratorios de backend | Proceso real | Visto en un repositorio privado |
-| Docker | Runtime de contenedores con el que arrancan los laboratorios | Proceso real | Visto en un repositorio privado |
-| Docker Compose | Definición de procesos de cada laboratorio | Proceso real | Visto en un repositorio privado |
+| Docker | Runtime de contenedores con el que arrancan los laboratorios | Proceso real | Nombrado en un laboratorio publicado |
+| Docker Compose | Definición de procesos de cada laboratorio | Proceso real | Nombrado en un laboratorio publicado |
 
 ### Integración compatible con AWS
 
@@ -79,11 +80,11 @@ Apuntar Terraform a Floci no convierte a Terraform en un emulador. El provider d
 | Lambda | Cómputo de funciones en el laboratorio de pedidos | API emulada | Visto en un repositorio privado |
 | API Gateway | API HTTP delante de esas funciones | API emulada | Visto en un repositorio privado |
 | Step Functions | Orquestación de la saga de cumplimiento | API emulada | Visto en un repositorio privado |
-| SQS | Colas, incluida una cola de mensajes fallidos | API emulada | Visto en un repositorio privado |
+| SQS | Colas, incluida una cola de mensajes fallidos | API emulada | Nombrado en un laboratorio publicado |
 | SNS | Fan-out por temas en el alcance del proyecto 02 | API emulada | Aún no hay laboratorio publicado |
 | EventBridge | Eventos de pedido y de cumplimiento | API emulada | Visto en un repositorio privado |
-| S3 | Objetos para el estado del laboratorio y los recibos | API emulada | Visto en un repositorio privado |
-| DynamoDB | Almacenamiento en tablas para los laboratorios | API emulada | Visto en un repositorio privado |
+| S3 | Objetos para el estado del laboratorio y los recibos | API emulada | Nombrado en un laboratorio publicado |
+| DynamoDB | Almacenamiento en tablas para los laboratorios | API emulada | Nombrado en un laboratorio publicado |
 
 Los roles de IAM que usan esas funciones están en la sección de seguridad. El README del proyecto 02 señala la autorización de API Gateway como seguimiento opcional, así que esta fila no trata esa autorización como trabajo terminado.
 

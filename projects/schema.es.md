@@ -8,7 +8,7 @@
 
 ## Fuente de verdad
 
-Primero se cambia el YAML, después los dos README y, si una herramienta pasó de "visto en un repositorio privado" a "aún no hay laboratorio publicado" o al revés, las tablas del stack. El cambio no está listo hasta que el validador termina bien.
+Primero se cambia el YAML, después los dos README y, si una herramienta pasó entre "nombrado en un laboratorio publicado", "visto en un repositorio privado" y "aún no hay laboratorio publicado", las tablas del stack. El cambio no está listo hasta que el validador termina bien.
 
 ```bash
 python3 scripts/validate_portfolio.py
@@ -30,7 +30,7 @@ python3 scripts/validate_portfolio.py --check-links
 | `status` | Sí | Una de las claves de estado de abajo. |
 | `url` | Sí, anulable | `https://github.com/<owner>/<slug>` o `null`. |
 | `url_verified` | Sí | `true` solo después de abrir la URL y comprobar que resuelve. Si es `false`, `url` debe ser `null`. |
-| `documentation` | Sí | Lista de `{label.en, label.es, url}`. Vacía si no hay nada comprobado. Cada URL debe vivir bajo la URL del proyecto. |
+| `documentation` | Sí | Lista de `{label.en, label.es, url}`. Vacía si no hay nada comprobado. Cada URL debe vivir bajo la URL del proyecto, o en el sitio de GitHub Pages de ese repositorio (`https://<owner>.github.io/<slug>/`). |
 | `demo` | Sí, anulable | URL pública de demo, o `null`. No corresponde poner aquí una URL de localhost. |
 | `featured` | Sí | `true` solo con evidencia de implementación y una decisión consciente de destacarlo. |
 | `repository_note` | No | `{en, es}` o `null`. Los dos README deben contener el texto de forma exacta. Sirve para un matiz que la tabla no puede decir, como una herramienta listada que no está en el Terraform publicado. |
@@ -117,6 +117,6 @@ Archivos que deben seguir en pareja:
 
 El validador comprueba el esquema, las filas exactas del README, el texto de proyectos destacados, los enlaces relativos, la ausencia de rutas del directorio personal y de material secreto evidente, y la columna de laboratorio publicado en los dos documentos del stack.
 
-`SEEN_IN_PRIVATE_REPOSITORY` y `MUST_NOT_CLAIM` en `scripts/validate_portfolio.py` son el cierre de esa columna. Una herramienta pasa de una lista a la otra solo cuando un repositorio la muestra. Los dos documentos del stack se actualizan en el mismo cambio. La oración de `PUBLISHED_STATUS` hoy significa que la herramienta se vio en un repositorio privado retirado. Los proyectos 01 y 02 se van a rehacer, y sus slugs del portafolio no están publicados. Cuando exista un repositorio público, hay que cambiar esa oración en el validador y en los dos documentos del stack, y poner `url_verified: true`.
+`NAMED_IN_PUBLISHED_LAB`, `SEEN_IN_PRIVATE_REPOSITORY` y `MUST_NOT_CLAIM` en `scripts/validate_portfolio.py` son el cierre de esa columna. Una herramienta pasa entre esas listas solo cuando un repositorio la muestra. Los dos documentos del stack se actualizan en el mismo cambio. Las herramientas del proyecto 01 usan `NAMED_IN_PUBLISHED_LAB`. Las del proyecto 02 siguen en `SEEN_IN_PRIVATE_REPOSITORY` hasta que ese laboratorio vuelva a ser público.
 
 El workflow de GitHub Actions `.github/workflows/validate-portfolio.yml` ejecuta el mismo comando con `--check-links` en push y en pull request. No despliega un sitio.

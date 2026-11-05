@@ -39,7 +39,7 @@ Manual primero, infraestructura como código después, automatización al final.
 
 ## Reconstrucción
 
-Los proyectos 01 y 02 ya tuvieron una primera versión: Compose, Terraform y, en el proyecto 02, Go. Esas copias se hicieron privadas y se renombraron con el sufijo `-depr` para rehacer los laboratorios desde cero. La copia retirada es evidencia de que un laboratorio existió. No es el repositorio del portafolio, y no es evidencia de que el camino manual se haya reconstruido.
+El proyecto 01 volvió a ser público después de rehacerlo: Compose, Terraform, Floci y una validación de endpoint. El proyecto 02 todavía tiene solo una copia privada retirada con el sufijo `-depr`, incluido Go. Un repositorio publicado es evidencia de que el laboratorio existe. No es evidencia de que el camino manual se haya reconstruido.
 
 Reconstruir significa hacer los pasos 1 a 5 sobre ese laboratorio y dejar el resultado en el repositorio del proyecto: qué se creó en la UI, qué llamadas de la CLI coincidieron, qué bloques de Terraform se pueden explicar y qué fallo se provocó a propósito. Hasta que ese registro exista, este portafolio mantiene el estado `implemented_learning_pending`.
 

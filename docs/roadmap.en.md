@@ -27,7 +27,7 @@ Early projects stay on one machine and one emulator account. Later projects add 
 
 ### 01 — Cloud fundamentals
 
-Stand up Floci, point the AWS CLI and Terraform at it, and learn the infrastructure lifecycle: plan, apply, state, and destroy. A retired private copy, `floci-cloud-foundation-depr`, also created an SQS queue next to S3 and DynamoDB. That copy is not the portfolio repository. The point of the stage is a lab you can rebuild, with a guard that refuses a non-local endpoint.
+Stand up Floci, point the AWS CLI and Terraform at it, and learn the infrastructure lifecycle: plan, apply, state, and destroy. The public lab creates an SQS queue next to S3 and DynamoDB. An earlier private copy remains under `floci-cloud-foundation-depr` and is not linked. The point of the stage is a lab you can rebuild, with a guard that refuses a non-local endpoint.
 
 ### 02 — Backend and distributed systems
 
@@ -59,11 +59,11 @@ The capstone. Reusable Terraform modules, golden paths, and a self-service workf
 
 ## Public repositories
 
-No public repository is linked. The first versions of projects 01 and 02 were made private and renamed `floci-cloud-foundation-depr` and `floci-event-driven-commerce-depr` so those labs can be rebuilt from scratch. This roadmap does not link the retired copies and does not copy their command output.
+Project 01 is public. Project 02 is not. Earlier private copies remain under `floci-cloud-foundation-depr` and `floci-event-driven-commerce-depr`. This roadmap does not link those retired copies and does not copy their command output.
 
 | Project | Public URL | What this index treats as evidence |
 | --- | --- | --- |
-| 01 | None | A retired private copy. The portfolio lab will be rebuilt. Learning reconstruction is still pending. |
+| 01 | [floci-cloud-foundation](https://github.com/keviingarciah/floci-cloud-foundation) | A public lab README, architecture note, state notes, and an illustrated walkthrough. Learning reconstruction is still pending. |
 | 02 | None | A retired private copy. The portfolio lab will be rebuilt. Learning reconstruction is still pending. |
 
 ## Not started

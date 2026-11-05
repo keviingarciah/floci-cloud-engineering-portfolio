@@ -39,7 +39,7 @@ Manual first, infrastructure as code second, automation third. Skipping to step 
 
 ## Reconstruction
 
-Projects 01 and 02 already had a first version: Compose, Terraform, and, in project 02, Go. Those copies were made private and renamed with the suffix `-depr` so the labs can be rebuilt from scratch. The retired copy is evidence that a lab existed. It is not the portfolio repository, and it is not evidence that the manual path has been reconstructed.
+Project 01 is public again after a rebuild: Compose, Terraform, Floci, and an endpoint guard. Project 02 still has only a retired private copy with the suffix `-depr`, including Go. A published repository is evidence that a lab exists. It is not evidence that the manual path has been reconstructed.
 
 Reconstruction means doing steps 1 through 5 against that lab and recording the result in the project repository: what was created in the UI, which CLI calls matched it, which Terraform blocks you can explain, and which failure you provoked on purpose. Until that record exists, this portfolio keeps the status `implemented_learning_pending`.
 

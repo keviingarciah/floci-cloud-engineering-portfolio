@@ -12,10 +12,11 @@ The status column is not a skill score.
 
 | Status | Meaning |
 | --- | --- |
-| Seen in a private repository | This tool was present in the retired private copy of project 01 or 02, renamed with the suffix `-depr`. The portfolio lab will be rebuilt. This index does not link that copy. |
+| Named in a published lab | Project 01 already contains this tool in code, Terraform, or the lab README. This index did not re-run that lab. |
+| Seen in a private repository | This tool was present in the retired private copy of project 02, renamed with the suffix `-depr`. The portfolio lab for project 02 will be rebuilt. This index does not link that copy. |
 | No lab published yet | The tool is part of the curriculum. No published lab in this portfolio shows it yet. |
 
-The review date for that split is 2026-10-18.
+The review date for that split is 2026-11-04.
 
 | Kind | Meaning |
 | --- | --- |
@@ -43,7 +44,7 @@ flowchart TB
   TF --> API
 ```
 
-k3s, Prometheus, and Grafana are on the diagram because they are the shape of later projects. They are not running as part of a published lab in this index. Docker is already how projects 01 and 02 start Floci.
+k3s, Prometheus, and Grafana are on the diagram because they are the shape of later projects. They are not running as part of a published lab in this index. Docker is already how the public project 01 lab starts Floci.
 
 Pointing Terraform at Floci does not make Terraform an emulator. The AWS provider is a client. The resources it creates are emulator state.
 
@@ -53,24 +54,24 @@ Pointing Terraform at Floci does not make Terraform an emulator. The AWS provide
 
 | Tool | Role | Kind | Portfolio status |
 | --- | --- | --- | --- |
-| Floci | Local AWS-compatible emulator | Real process | Seen in a private repository |
-| Floci UI | Console for resources the emulator supports | Real process | Seen in a private repository |
-| AWS CLI | Manual operations against the local endpoint | Client | Seen in a private repository |
+| Floci | Local AWS-compatible emulator | Real process | Named in a published lab |
+| Floci UI | Console for resources the emulator supports | Real process | Named in a published lab |
+| AWS CLI | Manual operations against the local endpoint | Client | Named in a published lab |
 | AWS SDK | Go SDK calls from the project 02 functions | Client | Seen in a private repository |
 
 ### Infrastructure as code
 
 | Tool | Role | Kind | Portfolio status |
 | --- | --- | --- | --- |
-| Terraform | Hand-written configuration and lifecycle | Client | Seen in a private repository |
+| Terraform | Hand-written configuration and lifecycle | Client | Named in a published lab |
 
 ### Application runtime
 
 | Tool | Role | Kind | Portfolio status |
 | --- | --- | --- | --- |
 | Go | Application language for backend labs | Real process | Seen in a private repository |
-| Docker | Container runtime used to start the labs | Real process | Seen in a private repository |
-| Docker Compose | Per-lab process definition | Real process | Seen in a private repository |
+| Docker | Container runtime used to start the labs | Real process | Named in a published lab |
+| Docker Compose | Per-lab process definition | Real process | Named in a published lab |
 
 ### AWS-compatible integration
 
@@ -79,11 +80,11 @@ Pointing Terraform at Floci does not make Terraform an emulator. The AWS provide
 | Lambda | Function compute in the order lab | Emulated API | Seen in a private repository |
 | API Gateway | HTTP API in front of those functions | Emulated API | Seen in a private repository |
 | Step Functions | Saga orchestration for fulfillment | Emulated API | Seen in a private repository |
-| SQS | Queues, including a dead-letter queue | Emulated API | Seen in a private repository |
+| SQS | Queues, including a dead-letter queue | Emulated API | Named in a published lab |
 | SNS | Topic fan-out in the project 02 scope | Emulated API | No lab published yet |
 | EventBridge | Order and fulfillment events | Emulated API | Seen in a private repository |
-| S3 | Objects for lab state and receipts | Emulated API | Seen in a private repository |
-| DynamoDB | Table storage for the labs | Emulated API | Seen in a private repository |
+| S3 | Objects for lab state and receipts | Emulated API | Named in a published lab |
+| DynamoDB | Table storage for the labs | Emulated API | Named in a published lab |
 
 IAM task roles used by those functions are listed under security. API Gateway authorization is called out by the project 02 README as optional follow-up, so this row does not treat authorization as finished.
 

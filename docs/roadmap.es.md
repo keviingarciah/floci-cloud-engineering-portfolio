@@ -27,7 +27,7 @@ Los primeros proyectos se quedan en una máquina y en una cuenta del emulador. L
 
 ### 01 — Fundamentos de nube
 
-Levantar Floci, apuntar la AWS CLI y Terraform hacia él, y aprender el ciclo de vida de la infraestructura: plan, apply, estado y destroy. Una copia privada retirada, `floci-cloud-foundation-depr`, también creó una cola de SQS junto a S3 y DynamoDB. Esa copia no es el repositorio del portafolio. El objetivo de la etapa es un laboratorio que se pueda reconstruir, con una validación que rechaza un endpoint que no sea local.
+Levantar Floci, apuntar la AWS CLI y Terraform hacia él, y aprender el ciclo de vida de la infraestructura: plan, apply, estado y destroy. El laboratorio público crea una cola de SQS junto a S3 y DynamoDB. Una copia privada anterior sigue bajo `floci-cloud-foundation-depr` y no se enlaza. El objetivo de la etapa es un laboratorio que se pueda reconstruir, con una validación que rechaza un endpoint que no sea local.
 
 ### 02 — Backend y sistemas distribuidos
 
@@ -59,11 +59,11 @@ El cierre. Módulos reutilizables de Terraform, rutas de referencia (golden path
 
 ## Repositorios públicos
 
-No hay un repositorio público enlazado. Las primeras versiones de los proyectos 01 y 02 se hicieron privadas y se renombraron a `floci-cloud-foundation-depr` y `floci-event-driven-commerce-depr` para rehacer esos laboratorios desde cero. Esta hoja de ruta no enlaza las copias retiradas y no copia la salida de sus comandos.
+El proyecto 01 es público. El proyecto 02 no. Las copias privadas anteriores siguen bajo `floci-cloud-foundation-depr` y `floci-event-driven-commerce-depr`. Esta hoja de ruta no enlaza esas copias retiradas y no copia la salida de sus comandos.
 
 | Proyecto | URL pública | Qué trata como evidencia este índice |
 | --- | --- | --- |
-| 01 | Ninguna | Una copia privada retirada. El laboratorio del portafolio se va a rehacer. La reconstrucción del aprendizaje sigue pendiente. |
+| 01 | [floci-cloud-foundation](https://github.com/keviingarciah/floci-cloud-foundation) | Un README público del laboratorio, una nota de arquitectura, notas de estado y un recorrido ilustrado. La reconstrucción del aprendizaje sigue pendiente. |
 | 02 | Ninguna | Una copia privada retirada. El laboratorio del portafolio se va a rehacer. La reconstrucción del aprendizaje sigue pendiente. |
 
 ## Sin empezar

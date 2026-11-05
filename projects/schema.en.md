@@ -8,7 +8,7 @@
 
 ## Source of truth
 
-Change the YAML first, then both READMEs, then the stack tables if a tool moved between "seen in a private repository" and "no lab published yet". Run the validator before considering the change done.
+Change the YAML first, then both READMEs, then the stack tables if a tool moved between "named in a published lab", "seen in a private repository", and "no lab published yet". Run the validator before considering the change done.
 
 ```bash
 python3 scripts/validate_portfolio.py
@@ -30,7 +30,7 @@ python3 scripts/validate_portfolio.py --check-links
 | `status` | Yes | One of the status keys below. |
 | `url` | Yes, nullable | `https://github.com/<owner>/<slug>` or `null`. |
 | `url_verified` | Yes | `true` only after the URL has been opened and it resolves. If `false`, `url` must be `null`. |
-| `documentation` | Yes | List of `{label.en, label.es, url}`. Empty when nothing has been checked. Each URL must sit under the project URL. |
+| `documentation` | Yes | List of `{label.en, label.es, url}`. Empty when nothing has been checked. Each URL must sit under the project URL, or on that repository's GitHub Pages site (`https://<owner>.github.io/<slug>/`). |
 | `demo` | Yes, nullable | Public demo URL, or `null`. Do not put a localhost URL here. |
 | `featured` | Yes | `true` only with implementation evidence and a conscious decision to feature it. |
 | `repository_note` | No | `{en, es}` or `null`. Both READMEs must contain the text exactly. Use it for scope the table cannot say, such as a tool that is listed but not in the published Terraform. |
@@ -117,6 +117,6 @@ Files that must stay in pairs:
 
 The validator checks the schema, exact README rows, featured copy, relative links, the absence of home-directory paths and obvious secret material, and the published-lab column in both stack documents.
 
-`SEEN_IN_PRIVATE_REPOSITORY` and `MUST_NOT_CLAIM` in `scripts/validate_portfolio.py` are the lock on that column. Move a tool from one list to the other only after a repository shows it. Update both stack documents in the same change. The sentence in `PUBLISHED_STATUS` currently means the tool was seen in a retired private repository. Projects 01 and 02 will be rebuilt, and their portfolio slugs are not published. When a public repository exists, change that sentence in the validator and in both stack documents, and set `url_verified: true`.
+`NAMED_IN_PUBLISHED_LAB`, `SEEN_IN_PRIVATE_REPOSITORY`, and `MUST_NOT_CLAIM` in `scripts/validate_portfolio.py` are the lock on that column. Move a tool between those lists only after a repository shows it. Update both stack documents in the same change. Project 01 tools use `NAMED_IN_PUBLISHED_LAB`. Project 02 tools still use `SEEN_IN_PRIVATE_REPOSITORY` until that lab is public again.
 
 The GitHub Actions workflow `.github/workflows/validate-portfolio.yml` runs the same command with `--check-links` on push and pull request. It does not deploy a site.

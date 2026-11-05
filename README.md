@@ -47,7 +47,7 @@ Technologies name the learning scope of a project. A published repository can co
 
 | # | Project | Description | Main technologies | Difficulty | Current progress | Repository |
 | --- | --- | --- | --- | --- | --- | --- |
-| 01 | Floci Cloud Foundation | Local Floci setup for the AWS CLI, Terraform, S3, DynamoDB, infrastructure lifecycle, state, and repeatable environments. | Floci, Floci UI, Docker Compose, AWS CLI, Terraform, S3, DynamoDB, SQS | Foundational | Implemented — learning/reconstruction pending | `floci-cloud-foundation` — Not published |
+| 01 | Floci Cloud Foundation | Local Floci setup for the AWS CLI, Terraform, S3, DynamoDB, infrastructure lifecycle, state, and repeatable environments. | Floci, Floci UI, Docker Compose, AWS CLI, Terraform, S3, DynamoDB, SQS | Foundational | Implemented — learning/reconstruction pending | [floci-cloud-foundation](https://github.com/keviingarciah/floci-cloud-foundation) |
 | 02 | Event-Driven Commerce | Go services on Floci for asynchronous orders, idempotency, retries, and dead-letter queues. | Go, Lambda, API Gateway, DynamoDB, SQS, SNS, EventBridge, Step Functions | Intermediate | Implemented — learning/reconstruction pending | `floci-event-driven-commerce` — Not published |
 | 03 | Container Delivery Platform | Container build and delivery with Docker, ECS, ECR, RDS, Redis, ALB, Jenkins, and AWS-compatible pipelines, including blue/green deployments. | Docker, ECS, ECR, RDS, Redis, ALB, CodeBuild, CodePipeline, CodeDeploy, Jenkins | Intermediate | Planned | `floci-container-delivery` — Not published |
 | 04 | SRE and Observability | Signals, SLOs, and failure recovery with CloudWatch, Prometheus, Grafana, Loki, OpenTelemetry, Jaeger, and load and fault injection. | CloudWatch, Prometheus, Grafana, Loki, Grafana Alloy, OpenTelemetry, Jaeger, Alertmanager, k6, Toxiproxy | Intermediate | Planned | `floci-sre-observability` — Not published |
@@ -66,13 +66,13 @@ Technologies name the learning scope of a project. A published repository can co
 
 ### Repository links
 
-No project URL is listed. Projects 01 and 02 already had a first version. Those copies were made private and renamed with the suffix `-depr` so the labs can be rebuilt from scratch. This index does not link the retired copies.
+Project 01 is public. Project 02 still has no public URL. Both projects had an earlier version that was made private and renamed with the suffix `-depr`. This index does not link those retired copies.
 
-**01 — Floci Cloud Foundation.** A first version was finished, then made private and renamed to floci-cloud-foundation-depr so the lab can be rebuilt from scratch. That retired copy used the Floci UI, Docker Compose, Terraform, and the AWS CLI to create an S3 bucket, a DynamoDB table, and an SQS queue on 127.0.0.1, with a guard that rejects other endpoints. The portfolio repository is not published yet.
+**01 — Floci Cloud Foundation.** [Repository](https://github.com/keviingarciah/floci-cloud-foundation). [Architecture](https://github.com/keviingarciah/floci-cloud-foundation/blob/main/docs/architecture.md), [state notes](https://github.com/keviingarciah/floci-cloud-foundation/blob/main/docs/state.md), [illustrated walkthrough](https://keviingarciah.github.io/floci-cloud-foundation/). The rebuilt public lab uses Floci 2.3.0, the Floci UI, Docker Compose, Terraform, and the AWS CLI to create an S3 bucket, a DynamoDB table, and an SQS queue on 127.0.0.1, with a guard that rejects other endpoints. An earlier private copy remains under the name floci-cloud-foundation-depr and is not linked. Learning reconstruction is still pending.
 
 **02 — Event-Driven Commerce.** A first version was finished, then made private and renamed to floci-event-driven-commerce-depr so the lab can be rebuilt from scratch. That retired Terraform included API Gateway, Lambda, DynamoDB, EventBridge, S3, SQS with a dead-letter queue, Step Functions, and IAM task roles. SNS was not in that Terraform. API Gateway authorization was described as optional follow-up. The portfolio repository is not published yet.
 
-Projects 03 through 08 have no repository at all in this index. There is no public demo. When a public lab exists, follow that repository's own instructions. Labs that bind the same local ports should run one at a time.
+Projects 03 through 08 have no repository at all in this index. There is no public live demo. Follow each published repository's own instructions. Labs that bind the same local ports should run one at a time.
 
 ## Learning progression
 
@@ -102,7 +102,7 @@ Project 08 is the capstone. It is where the earlier projects are meant to meet. 
 
 ## Technology stack
 
-Tools are grouped by job. The long matrix, including which tools were seen in a private repository, is the [technology stack](docs/technology-stack.en.md).
+Tools are grouped by job. The long matrix, including which tools a published lab already names, is the [technology stack](docs/technology-stack.en.md).
 
 | Category | Tools on this path |
 | --- | --- |
@@ -120,7 +120,7 @@ Tools are grouped by job. The long matrix, including which tools were seen in a 
 
 No project is featured yet.
 
-A project becomes featured only after `featured: true` is set in [projects/projects.yaml](projects/projects.yaml). Set that flag when a public repository has a complete enough implementation and this index has technical evidence for it. Projects 01 and 02 stay unfeatured. Their first versions were retired as private `-depr` repositories, and the rebuilt labs are not published yet.
+A project becomes featured only after `featured: true` is set in [projects/projects.yaml](projects/projects.yaml). Set that flag when a public repository has a complete enough implementation and this index has technical evidence for it. Projects 01 and 02 stay unfeatured while learning reconstruction is pending. Project 01 is public. Project 02 is not published yet.
 
 ## Reproducibility
 
